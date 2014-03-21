@@ -1,0 +1,16 @@
+{
+  "name": "viewerjs-demos",
+  "version": "0.0.0",
+  "description": "viewer.js demos",
+  "author": "Cameron Lakenen <lakenen@box.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lakenen/viewer.js-demos.git"
+  },
+  "scripts": {
+    "start": "node_modules/.bin/http-server ."
+  },
+  "devDependencies": {
+    "http-server": "^0.6.1"
+  }
+}
