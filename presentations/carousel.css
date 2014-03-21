@@ -10,7 +10,7 @@
     -webkit-perspective: 500px;
     perspective: 500px;
     -webkit-perspective-origin: 100% 50%;
-    perspective-origin: 100% 50%;
+    perspective-origin: 50% 50%; /* @NOTE: firefox and chrome do perspectives differently apparently */
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
 }
@@ -33,8 +33,10 @@
     visibility: visible !important;
 }
 .crocodoc-carousel .crocodoc-current-page {
-    -webkit-transform: none;
-    transform: none;
+    -webkit-transform: rotateY(0) translateZ(1px);
+    transform: rotateY(0) translateZ(1px);
+    z-index: 2 !important;
+    opacity: 1;
 }
 .crocodoc-carousel .crocodoc-page-before {
     -webkit-transform: rotateY(-90deg) translateX(-200%);
