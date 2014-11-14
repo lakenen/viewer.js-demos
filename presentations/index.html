@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" media="screen" href="pageflip.css" />
-    <link rel="stylesheet" media="screen" href="carousel.css" />
     <link rel="stylesheet" href="../crocodoc.viewer.min.css" />
+    <link rel="stylesheet" href="pop.css" />
+    <link rel="stylesheet" href="fade.css" />
+    <link rel="stylesheet" href="slide.css" />
+    <link rel="stylesheet" href="spin.css" />
+    <link rel="stylesheet" href="pageflip.css" />
+    <link rel="stylesheet" href="carousel.css" />
     <script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
     <script src="../crocodoc.viewer.min.js"></script>
     <style>
@@ -26,9 +30,7 @@
         .controls {
             position: fixed;
             bottom: 10px;
-            left: 50%;
-            margin-left: -150px;
-            width: 300px;
+            width: 100%;
             text-align: center;
         }
         button {
@@ -47,8 +49,14 @@
 <body class="transition">
     <div class="viewer"></div>
     <div class="controls">
+        <button onclick="viewer.scrollTo('previous')">&larr;</button>
+        <button onclick="viewer.scrollTo('next')">&rarr;</button>
+        <br/>
+        <br/>
         <button class="pop" onclick="setMode('pop')">Pop</button>
+        <button class="fade" onclick="setMode('fade')">Fade</button>
         <button class="carousel" onclick="setMode('carousel')">Carousel</button>
+        <button class="spin" onclick="setMode('spin')">Spin</button>
         <button class="slide" onclick="setMode('slide')">Slide</button>
         <button class="book" onclick="setMode('book')">Book</button>
     </div>
@@ -61,9 +69,21 @@
             $('.controls button.' + mode).addClass('selected');
             switch (mode) {
                 case 'pop':
-                    $('body').removeClass().addClass('crocodoc-presentation');
                     viewer.setLayout(Crocodoc.LAYOUT_PRESENTATION);
                     viewer.zoom(Crocodoc.ZOOM_AUTO);
+                    $('body').removeClass().addClass('crocodoc-presentation-pop');
+                    break;
+
+                case 'fade':
+                    viewer.setLayout(Crocodoc.LAYOUT_PRESENTATION);
+                    viewer.zoom(Crocodoc.ZOOM_AUTO);
+                    $('body').removeClass().addClass('crocodoc-presentation-fade');
+                    break;
+
+                case 'spin':
+                    viewer.setLayout(Crocodoc.LAYOUT_PRESENTATION);
+                    viewer.zoom(Crocodoc.ZOOM_AUTO);
+                    $('body').removeClass().addClass('crocodoc-presentation-spin');
                     break;
 
                 case 'slide':
@@ -76,7 +96,7 @@
                     viewer.setLayout(Crocodoc.LAYOUT_PRESENTATION);
                     viewer.zoom(Crocodoc.ZOOM_AUTO);
                     viewer.zoom(Crocodoc.ZOOM_OUT);
-                    $('body').removeClass().addClass('crocodoc-carousel');
+                    $('body').removeClass().addClass('crocodoc-presentation-carousel');
                     break;
 
                 case 'book':

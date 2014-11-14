@@ -1,5 +1,6 @@
-
 /**** PAGE FLIP STUFF ****/
+
+/*ABANDON ALL HOPE YE WHO ENTER HERE*/
 
 .crocodoc-pageflip .crocodoc-page-visible,
 .crocodoc-pageflip .crocodoc-page-next,
@@ -12,23 +13,24 @@
     visibility: visible;
 }
 
+/* Visible pages should always be on top */
 .crocodoc-pageflip .crocodoc-page-visible {
-    z-index: 2 !important;
+    z-index: 2;
 }
 
+/* Next/Previous page should sit above other pages so it doesn't look weird when
+transitioning */
 .crocodoc-pageflip .crocodoc-page-prev,
 .crocodoc-pageflip .crocodoc-page-next {
     z-index: 1;
 }
 
-.crocodoc-pageflip .crocodoc-pages {
+.crocodoc-pageflip .crocodoc-doc {
     overflow: visible;
     -webkit-perspective: 2000px;
     perspective: 2000px;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
-    -webkit-transition: -webkit-transform 0.5s;
-    transition: transform 0.5s;
     -webkit-transform-origin: 50% 50%;
     transform-origin: 50% 50%;
 }
@@ -91,10 +93,10 @@
     transform: none;
 }
 
+/* Create a gradient to make it look more like a book */
 .crocodoc-pageflip .crocodoc-page:nth-child(odd) .crocodoc-page-overlay {
     background-image: linear-gradient(to right, rgba(136,136,136,0) 0%,rgba(136,136,136,0) 65%,rgba(136,136,136,0.03) 88%,rgba(136,136,136,0.01) 94%,rgba(136,136,136,0.03) 95%,rgba(136,136,136,0.1) 100%);
 }
-
 .crocodoc-pageflip .crocodoc-page:nth-child(even) .crocodoc-page-overlay {
     background-image: linear-gradient(to right, rgba(0,0,0,0.08) 0%,rgba(0,0,0,0.05) 1%,rgba(0,0,0,0.01) 15%,rgba(0,0,0,0) 25%,rgba(0,0,0,0) 100%);
 }

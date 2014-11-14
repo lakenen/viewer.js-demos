@@ -1,0 +1,22 @@
+/*Apply a transition to all pages*/
+.crocodoc-presentation-pop .crocodoc-page {
+    -webkit-transition: visibility 0s, opacity 0.3s, -webkit-transform 0.25s;
+    transition: visibility 0s, opacity 0.3s, transform 0.25s;
+}
+/*Transform and transparentize (all) previous pages */
+.crocodoc-presentation-pop .crocodoc-page-before {
+    -webkit-transform: rotate(-3deg) translate(-12%, -12%);
+    transform: rotate(-3deg) translate(-12%, -12%);
+    /*Delay the visibility "transition", because we want to see the opacity/transform transitions*/
+    -webkit-transition-delay: 0.3s, 0s, 0s;
+    transition-delay: 0.3s, 0s, 0s;
+    opacity: 0;
+    z-index: 2;
+}
+/*The current and next page should always be visible and transform-less*/
+.crocodoc-presentation-pop .crocodoc-page-next {
+    -webkit-transform: none;
+    transform: none;
+    visibility: visible;
+    opacity: 1;
+}
